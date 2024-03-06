@@ -82,7 +82,7 @@ public class BoardController {
 	public String modify(@ModelAttribute BoardVo boardVo) {
 		System.out.println("BoardController.modify()");
 		boardService.exeModify(boardVo);
-		return "redirect:/read?no=" + boardVo.getNo();
+		return "redirect:/board/read?no="+boardVo.getNo();
 	}
 	
 	

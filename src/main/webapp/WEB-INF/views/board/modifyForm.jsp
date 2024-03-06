@@ -75,6 +75,7 @@
 							</div>
 							
 							<a id="btn_cancel" href="">취소</a>
+							<input type="hidden" name="no" value="${boardVo.no }">
 							<button id="btn_modify" type="submit" >수정</button>
 							
 						</form><!-- //form -->

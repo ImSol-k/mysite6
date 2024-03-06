@@ -31,8 +31,10 @@
 	<!-- 수정 -->
 	<update id="update" parameterType="boardVo">
 	<![CDATA[
-		insert into board
-		values(null, #{title}, #{content}, 0, now(), #{userNo})
+		update board
+		set title = #{title},
+			content = #{content}
+		where no = #{no}
 	]]>
 	</update>
 
