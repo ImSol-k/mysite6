@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+
+	<!-- 쿼리문 작성 -->
+	<!-- login -->
+	<select id="selectOne" parameterType="String" resultType="userVo">
+		<![CDATA[
+			select no, id, pass pw, name, gender
+			from users
+			where id = #{id} and pass = #{pw}
+		]]>
+	</select>
+
+	<!-- 회원가입 -->
+	<insert id="insert">
+		<![CDATA[
+			insert into users
+			values (null, #{id}, #{pw}, #{name}, #{gender})
+		]]>
+	</insert>
+
+	<!-- 회원정보수정 -->
+	<update id="update" parameterType="userVo">
+		<![CDATA[
+		update users
+		set pass = #{pw} ,
+			name = #{name},
+		    gender = #{gender}
+		where no = #{no} 
+		]]>
+	</update>
+
+</mapper>
