@@ -27,10 +27,11 @@ public class BoardController {
 	
 	//리스트
 	@RequestMapping(value="/list", method={RequestMethod.GET, RequestMethod.POST})
-	public String list(Model model) {
+	public String list(@RequestParam String find, HttpSession session) {
 		System.out.println("BoardController.list()");
+
 		List<BoardVo> boardList = boardService.exeList();
-		model.addAttribute("bList", boardList);
+		session.setAttribute("bList", boardList);
 		return "board/list";
 	}
 	
@@ -85,5 +86,17 @@ public class BoardController {
 		return "redirect:/board/read?no="+boardVo.getNo();
 	}
 	
+	//검색
+	@RequestMapping(value="/find", method= {RequestMethod.GET, RequestMethod.POST})
+	public String findForm(@RequestParam("find") String find, HttpSession session) {
+		System.out.println("BoardController.find()");
+		
+		List<BoardVo> findList = boardService.exeFind(find);
+		session.setAttribute("findList", findList);
+		
+		System.out.println(findList);
+		
+		return "board/list";
+	}
 	
 }

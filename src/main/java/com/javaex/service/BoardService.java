@@ -16,15 +16,16 @@ public class BoardService {
 
 	public List<BoardVo> exeList() {
 		System.out.println("BoardService.exeList()");
-
 		return boardDao.boardSelect();
 	}
 	
 	public BoardVo exeRead(int no) {
+		System.out.println("BoardService.exeRead()");
 		return boardDao.boardSelectOne(no);
 	}
 	
 	public int exeModify(BoardVo boardVo) {
+		System.out.println("BoardService.exeModify()");
 		return boardDao.boardUpdate(boardVo);
 	}
 
@@ -33,4 +34,10 @@ public class BoardService {
 
 		return boardDao.boardInsert(boardVo);
 	}
+	
+	public List<BoardVo> exeFind(String find){
+		System.out.println("BoardService.exeFind()");
+		return boardDao.boardFind(find);
+	}
+	
 }

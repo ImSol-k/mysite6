@@ -8,8 +8,13 @@ public class BoardVo {
 	private String content;
 	private String regDate;
 	private String name;
+	private String find;
 	
 	public BoardVo() {
+	}
+	
+	public BoardVo(String find) {
+		this.find = find;
 	}
 	public BoardVo(int no, int hit, int userNo, String title, String content, String regDate, String name) {
 		this.no = no;
@@ -64,8 +69,13 @@ public class BoardVo {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
+	public String getFind() {
+		return find;
+	}
+	public void setFind(String find) {
+		this.find = find;
+	}
+
 	@Override
 	public String toString() {
 		return "BoardVo [no=" + no + ", hit=" + hit + ", userNo=" + userNo + ", title=" + title + ", content=" + content

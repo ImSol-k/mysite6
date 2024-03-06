@@ -38,5 +38,12 @@
 	]]>
 	</update>
 
+	<!-- 검색 -->
+	<select id="find" resultType="boardVo" parameterType="String">
+	<![CDATA[
+		select b.no, b.title, b.content, b.hit, b.reg_date, b.user_no, u.name
+		from board b, users u where b.user_no = u.no and b.title like concat('%', #{find}, '%')
+	]]>
+	</select>
 
 </mapper>

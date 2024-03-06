@@ -44,10 +44,10 @@
 
 				<div id="board">
 					<div id="list">
-						<form action="" method="">
+						<form action="${pageContext.request.contextPath}/board/find" method="get">
 							<div class="form-group text-right">
-								<input type="text">
-								<button type="submit" id=btn_search>검색</button>
+								<input type="text" name="find">
+								<button type="submit" id="btn_search">검색</button>
 							</div>
 						</form>
 						<table>
@@ -62,14 +62,16 @@
 								</tr>
 							</thead>
 							<tbody>
+
 								<c:forEach items="${bList }" var="boardVo">
 									<tr>
 										<td>${boardVo.no }</td>
-										<td class="text-left"><a href="${pageContext.request.contextPath}/board/read?no=${boardVo.no}">${boardVo.title }</a></td>
+										<td class="text-left"><a
+											href="${pageContext.request.contextPath}/board/read?no=${boardVo.no}">${boardVo.title }</a></td>
 										<td>${boardVo.name }</td>
 										<td>${boardVo.hit }</td>
 										<td>${boardVo.regDate }</td>
-										<c:if test="${authUser.no == boardVo.no}">
+										<c:if test="${authUser.no == boardVo.userNo}">
 											<td><a
 												href="${pageContext.request.contextPath}/board/delete?no=${boardVo.no}">[삭제]</a></td>
 										</c:if>
