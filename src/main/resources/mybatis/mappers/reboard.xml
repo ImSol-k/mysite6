@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rboard">
+
+	<!-- 쿼리문작성 -->
+	<!-- list -->
+	<select id="select" resultType="rboardVo">
+	<![CDATA[
+		select r.no, r.title, r.content, r.hit, r.reg_date regDate, r.group_no groupNo, r.order_no orderNo, r.depth, u.name
+		from rboard r, users u where r.user_no = u.no
+	]]>
+	</select>
+	<!-- read -->
+	<select id="selctOne" resultType="rboardVo" parameterType="int">
+	<![CDATA[
+		select no, user_no userNo, title, hit, reg_date regDate, group_no , order_no orderNo, depth
+		from rboard where no = #{no}
+	]]>
+	</select>
+
+</mapper>

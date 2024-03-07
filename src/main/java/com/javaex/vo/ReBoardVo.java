@@ -1,6 +1,6 @@
 package com.javaex.vo;
 
-public class CommentVo {
+public class ReBoardVo {
 	
 	private int no;
 	private int userNo;
@@ -11,10 +11,11 @@ public class CommentVo {
 	private String title;
 	private String content;
 	private String regDate;
+	private String name;
 	
-	public CommentVo() {
+	public ReBoardVo() {
 	}
-	public CommentVo(int no, int userNo, int hit, int groupNo, int orderNo, int depth, String title, String content, String regDate) {
+	public ReBoardVo(int no, int userNo, int hit, int groupNo, int orderNo, int depth, String title, String content, String regDate) {
 		this.no = no;
 		this.userNo = userNo;
 		this.hit = hit;
@@ -83,6 +84,12 @@ public class CommentVo {
 	}
 	
 	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	@Override
 	public String toString() {
 		return "CommentVo [no=" + no + ", userNo=" + userNo + ", hit=" + hit + ", groupNo=" + groupNo + ", orderNo="
