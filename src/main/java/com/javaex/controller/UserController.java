@@ -2,6 +2,7 @@ package com.javaex.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,7 +34,7 @@ public class UserController {
 		//로그인성공여부
 		if (authUser != null) {
 			session.setAttribute("authUser", authUser);
-			System.out.println("로그인성공" + authUser);
+			System.out.println("로그인성공(authUser): " + authUser);
 			return "redirect:/main";
 		} else {
 			System.out.println("로그인실패");
@@ -77,18 +78,37 @@ public class UserController {
 	/**********
 	 * modify */
 	@RequestMapping(value="/modifyform", method= {RequestMethod.GET, RequestMethod.POST})
-	public String modifyForm() {
+	public String modifyForm(HttpSession session, Model model) {
 		System.out.println("UserController.mform()");
 		
+		//session에 저장되어있는 authUser정보 가져오기
+		UserVo userVo = (UserVo)session.getAttribute("authUser");
+		
+		//로그인한 회원번호로 정보 다시받아오기 
+		int no = userVo.getNo();
+		userService.exeModifyF(no);
+		
+		//수정할 회원정보 저장
+		model.addAttribute("userVo", userVo);
+		System.out.println("Form: "+ userVo);
 		return "user/modifyForm";
 	}
 	
 	@RequestMapping(value="/modify", method= {RequestMethod.GET, RequestMethod.POST})
-	public String modify(HttpSession session,@ModelAttribute UserVo userVo) {
+	public String modify(@ModelAttribute UserVo userVo, HttpSession session) {
 		System.out.println("UserController.modify()");
 		
+		//modifyform 정보 불러오기
+		UserVo vo = (UserVo)session.getAttribute("authUser");
+		
+		//로그인한 회원번호 저장
+		int no = vo.getNo();
+		userVo.setNo(no);
+		
+		//수정할 정보 보내기
 		userService.exeModify(userVo);
 		session.setAttribute("authUser", userVo);
+		//System.out.println("Modify: " + userVo);
 		
 		return "redirect:/main";
 	}

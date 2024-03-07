@@ -21,16 +21,19 @@ public class UserService {
 	}
 	
 	//회원가입
-	public void exeJoin(UserVo userVo) {
+	public int exeJoin(UserVo userVo) {
 		System.out.println("UserService.exeJoin()");
 		
-		userDao.userInsert(userVo);
+		return userDao.userInsert(userVo);
 	}
 
 	//회원정보수정
-	public void exeModify(UserVo userVo) {
+	public UserVo exeModifyF(int no) {
 		System.out.println("userService.exeModify()");
-		
-		userDao.userUpdate(userVo);
+		return userDao.userUpdateSelect(no);
+	}
+	public int exeModify(UserVo userVo) {
+		System.out.println("userService.exeModify()");
+		return userDao.userUpdate(userVo);
 	}
 }

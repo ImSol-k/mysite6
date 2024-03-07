@@ -21,6 +21,13 @@
 	</insert>
 
 	<!-- 회원정보수정 -->
+	<select id="selectUpdate" parameterType="int" resultType="userVo">
+		<![CDATA[
+			select no, id, pass pw, name, gender
+			from users
+			where no = #{no} 
+		]]>
+	</select>
 	<update id="update" parameterType="userVo">
 		<![CDATA[
 		update users

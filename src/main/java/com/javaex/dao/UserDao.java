@@ -22,18 +22,22 @@ public class UserDao {
 	}
 	
 	//회원가입
-	public void userInsert(UserVo userVo) {
+	public int userInsert(UserVo userVo) {
 		System.out.println("userDao.userInsert()");
 		
 		System.out.println(userVo);
-		sqlSession.insert("user.insert",userVo);
+		return sqlSession.insert("user.insert",userVo);
 	}
 	
 	//회원정보수정
-	public void userUpdate(UserVo userVo) {
+	public UserVo userUpdateSelect(int no) {
 		System.out.println("userDao.userUpdate()");
 		
-		sqlSession.update("user.update", userVo);
+		return sqlSession.selectOne("user.selectUpdate", no);
+	}
+	public int userUpdate(UserVo userVo) {
+		System.out.println("userDao.userUpdate()" + userVo);
 		
+		return sqlSession.update("user.update", userVo);
 	}
 }
