@@ -12,10 +12,6 @@ public class BoardVo {
 	
 	public BoardVo() {
 	}
-	
-	public BoardVo(String find) {
-		this.find = find;
-	}
 	public BoardVo(int no, int hit, int userNo, String title, String content, String regDate, String name) {
 		this.no = no;
 		this.hit = hit;

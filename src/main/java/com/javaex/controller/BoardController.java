@@ -27,7 +27,7 @@ public class BoardController {
 	
 	//리스트
 	@RequestMapping(value="/list", method={RequestMethod.GET, RequestMethod.POST})
-	public String list(@RequestParam String find, HttpSession session) {
+	public String list(HttpSession session) {
 		System.out.println("BoardController.list()");
 
 		List<BoardVo> boardList = boardService.exeList();

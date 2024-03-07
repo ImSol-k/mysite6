@@ -7,5 +7,8 @@
 </head>
 <body>
 	<h1>댓글게시판</h1>
+	
+	
+	
 </body>
 </html>
