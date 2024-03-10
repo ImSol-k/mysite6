@@ -18,13 +18,7 @@
 		<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
 
 		<div id="container" class="clearfix">
-			<div id="aside">
-				<h2>게시판</h2>
-				<ul>
-					<li><a href="">일반게시판</a></li>
-					<li><a href="">댓글게시판</a></li>
-				</ul>
-			</div>
+			<jsp:include page="/WEB-INF/views/includes/board.jsp"></jsp:include>
 			<!-- //aside -->
 
 			<div id="content">

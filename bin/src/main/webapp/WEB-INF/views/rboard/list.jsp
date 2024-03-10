@@ -18,7 +18,14 @@
 		<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
 
 		<div id="container" class="clearfix">
-			<jsp:include page="/WEB-INF/views/includes/board.jsp"></jsp:include>
+			<div id="aside">
+				<h2>게시판</h2>
+				<ul>
+					<li><a href="">일반게시판</a></li>
+					<li><a href="">댓글게시판</a></li>
+				</ul>
+			</div>
+			<!-- //aside -->
 
 			<div id="content">
 
@@ -46,25 +53,23 @@
 						<table>
 							<thead>
 								<tr>
-									<th width="60px">번호</th>
+									<th>번호</th>
 									<th>제목</th>
 									<th>글쓴이</th>
-									<th width="60px">조회수</th>
-									<th width="120px">작성일</th>
-									<th>g/o</th>
+									<th>조회수</th>
+									<th>작성일</th>
+									<th>관리</th>
 								</tr>
 							</thead>
 							<tbody>
-							<c:forEach items="${cList }" var="rboardVo">
+							<c:forEach items="${cList }" var="commentVo">
 								<tr>
-									<td>${rboardVo.no }</td>
-									<td class="text-left"><a href="${pageContext.request.contextPath}/rboard/read?no=${rboardVo.no }">
-										${rboardVo.title }[${rboardVo.depth }]
-									</a></td>
-									<td>${rboardVo.name }</td>
-									<td>${rboardVo.hit }</td>
-									<td>${rboardVo.regDate }</td>
-									<td>${rboardVo.groupNo }/${rboardVo.orderNo }</td>
+									<td>${commentVo.no }</td>
+									<td class="text-left"><a href="${pageContext.request.contextPath}/rboard/read?no=${commentVo.no }">${commentVo.title }</a></td>
+									<td>${commentVo.name }</td>
+									<td>${commentVo.hit }</td>
+									<td>${commentVo.regDate }</td>
+									<td><a href="">[삭제]</a></td>
 								</tr>
 							</c:forEach>
 							</tbody>

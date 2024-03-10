@@ -5,9 +5,8 @@
 	<!-- 쿼리문 작성 -->
 	<!-- login -->
 	<select id="selectOne" parameterType="String" resultType="userVo">
-		<!-- 로그인시 필요한 정보만 얻어옴 -->
 		<![CDATA[
-			select no, name
+			select no, id, pass pw, name, gender
 			from users
 			where id = #{id} and pass = #{pw}
 		]]>
@@ -23,7 +22,6 @@
 
 	<!-- 회원정보수정 -->
 	<select id="selectUpdate" parameterType="int" resultType="userVo">
-		<!-- 회원정보수정에선 모든 정보가 필요하기때문에 다불러옴 -->
 		<![CDATA[
 			select no, id, pass pw, name, gender
 			from users

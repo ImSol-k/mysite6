@@ -16,7 +16,14 @@
 		<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
 
 		<div id="container" class="clearfix">
-			<jsp:include page="/WEB-INF/views/includes/board.jsp"></jsp:include>
+			<div id="aside">
+				<h2>게시판</h2>
+				<ul>
+					<li><a href="">일반게시판</a></li>
+					<li><a href="">댓글게시판</a></li>
+				</ul>
+			</div>
+			<!-- //aside -->
 
 			<div id="content">
 
@@ -35,46 +42,41 @@
 	
 				<div id="board">
 					<div id="read">
-						<form action="${pageContext.request.contextPath}/rboard/write" method="get">
+						<form action="#" method="get">
 							<!-- 작성자 -->
 							<div class="form-group">
-								<span class="form-text">작성자</span> <span class="form-value">${rbVo.name }</span>
+								<span class="form-text">작성자</span>
+								<span class="form-value">${rbVo.name }</span>
 							</div>
-
+							
 							<!-- 조회수 -->
 							<div class="form-group">
-								<span class="form-text">조회수</span> <span class="form-value">${rbVo.hit }</span>
+								<span class="form-text">조회수</span>
+								<span class="form-value">${rbVo.hit }</span>
 							</div>
-
+							
 							<!-- 작성일 -->
 							<div class="form-group">
-								<span class="form-text">작성일</span> <span class="form-value">${rbVo.regDate }</span>
+								<span class="form-text">작성일</span>
+								<span class="form-value">${rbVo.regDate }</span>
 							</div>
-
+							
 							<!-- 제목 -->
 							<div class="form-group">
-								<span class="form-text">제 목</span> <span class="form-value">${rbVo.title }</span>
+								<span class="form-text">제 목</span>
+								<span class="form-value">${rbVo.title }</span>
 							</div>
-
+						
 							<!-- 내용 -->
 							<div id="txt-content">
-								<span class="form-value"> ${rbVo.content } </span>
+								<span class="form-value" >
+									${rbVo.content }
+								</span>
 							</div>
-							<div>
-								<div>
-									<a id="btn_modify" href="${pageContext.request.contextPath}/board/modifyform?no=${rbVo.no}">수정</a>
-									<a id="btn_modify" href="${pageContext.request.contextPath}/board/list">목록</a>
-								</div>
-								<div class="form-group" style="width: 590px;">
-									<!-- <label class="form-text" for="txt-title">댓글달기</label> -->
-									<input type="text" style="width: 500px; height: 50px; vertical-align: top;" name="comment" value="" placeholder="댓글달기">
-									<a id="btn_modify" href="${pageContext.request.contextPath}/board/write">등록</a>
-								</div>
-
-							</div>
-
-						</form>
-						<!-- //form -->
+							<a id="btn_modify" href="${pageContext.request.contextPath}/board/modifyform?no=${rbVo.no}">수정</a>
+							<a id="btn_modify" href="${pageContext.request.contextPath}/board/list">목록</a>
+							
+						</form><!-- //form -->
 					</div><!-- //read -->
 				</div><!-- //board -->
 			</div><!-- //content  -->

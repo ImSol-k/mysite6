@@ -31,12 +31,20 @@ public class ReBoardController {
 	}
 	@RequestMapping(value="/read", method={RequestMethod.GET, RequestMethod.POST})
 	public String read(@RequestParam("no") int no, Model model) {
+		System.out.println("ReBoardController.read()");
 		
 		ReBoardVo rboardVo = rboardService.exeRead(no);
 		model.addAttribute("rbVo", rboardVo);
 		System.out.println("read: "+rboardVo);
 		
 		return "rboard/read";
+	}
+	
+	@RequestMapping(value="/write", method={RequestMethod.GET, RequestMethod.POST})
+	public String write() {
+		System.out.println("ReBoardController.write()");
+		
+		return "";
 	}
 	
 }

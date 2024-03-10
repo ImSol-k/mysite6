@@ -18,17 +18,24 @@
 		<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
 
 		<div id="container" class="clearfix">
-			<jsp:include page="/WEB-INF/views/includes/board.jsp"></jsp:include>
+			<div id="aside">
+				<h2>게시판</h2>
+				<ul>
+					<li><a href="">일반게시판</a></li>
+					<li><a href="">댓글게시판</a></li>
+				</ul>
+			</div>
+			<!-- //aside -->
 
 			<div id="content">
 
 				<div id="content-head">
-					<h3>댓글게시판</h3>
+					<h3>일반게시판</h3>
 					<div id="location">
 						<ul>
 							<li>홈</li>
 							<li>게시판</li>
-							<li class="last">댓글게시판</li>
+							<li class="last">일반게시판</li>
 						</ul>
 					</div>
 					<div class="clear"></div>
@@ -37,7 +44,7 @@
 
 				<div id="board">
 					<div id="list">
-						<form action="" method="get">
+						<form action="${pageContext.request.contextPath}/board/find" method="get">
 							<div class="form-group text-right">
 								<input type="text" name="find">
 								<button type="submit" id="btn_search">검색</button>
@@ -46,38 +53,41 @@
 						<table>
 							<thead>
 								<tr>
-									<th width="60px">번호</th>
+									<th>번호</th>
 									<th>제목</th>
 									<th>글쓴이</th>
-									<th width="60px">조회수</th>
-									<th width="120px">작성일</th>
-									<th>g/o</th>
+									<th>조회수</th>
+									<th>작성일</th>
+									<th>관리</th>
 								</tr>
 							</thead>
 							<tbody>
-							<c:forEach items="${cList }" var="rboardVo">
-								<tr>
-									<td>${rboardVo.no }</td>
-									<td class="text-left"><a href="${pageContext.request.contextPath}/rboard/read?no=${rboardVo.no }">
-										${rboardVo.title }[${rboardVo.depth }]
-									</a></td>
-									<td>${rboardVo.name }</td>
-									<td>${rboardVo.hit }</td>
-									<td>${rboardVo.regDate }</td>
-									<td>${rboardVo.groupNo }/${rboardVo.orderNo }</td>
-								</tr>
-							</c:forEach>
+
+								<c:forEach items="${bList }" var="boardVo">
+									<tr>
+										<td>${boardVo.no }</td>
+										<td class="text-left"><a
+											href="${pageContext.request.contextPath}/board/read?no=${boardVo.no}">${boardVo.title }</a></td>
+										<td>${boardVo.name }</td>
+										<td>${boardVo.hit }</td>
+										<td>${boardVo.regDate }</td>
+										<c:if test="${authUser.no == boardVo.userNo}">
+											<td><a
+												href="${pageContext.request.contextPath}/board/delete?no=${boardVo.no}">[삭제]</a></td>
+										</c:if>
+									</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 
 						<div id="paging">
 							<ul>
 								<li><a href="">◀</a></li>
-								<li class="active"><a href="">1</a></li>
+								<li><a href="">1</a></li>
 								<li><a href="">2</a></li>
 								<li><a href="">3</a></li>
 								<li><a href="">4</a></li>
-								<li><a href="">5</a></li>
+								<li class="active"><a href="">5</a></li>
 								<li><a href="">6</a></li>
 								<li><a href="">7</a></li>
 								<li><a href="">8</a></li>
@@ -89,7 +99,9 @@
 
 							<div class="clear"></div>
 						</div>
+						<c:if test="${!(empty authUser)}">
 							<a id="btn_write" href="${pageContext.request.contextPath}/board/writeform">글쓰기</a>
+						</c:if>
 					</div>
 					<!-- //list -->
 				</div>

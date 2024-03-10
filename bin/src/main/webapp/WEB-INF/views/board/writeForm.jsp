@@ -16,7 +16,13 @@
 		<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
 
 		<div id="container" class="clearfix">
-			<jsp:include page="/WEB-INF/views/includes/board.jsp"></jsp:include>
+			<div id="aside">
+				<h2>게시판</h2>
+				<ul>
+					<li><a href="">일반게시판</a></li>
+					<li><a href="">댓글게시판</a></li>
+				</ul>
+			</div>
 			<!-- //aside -->
 
 			<div id="content">
@@ -35,51 +41,31 @@
 				<!-- //content-head -->
 	
 				<div id="board">
-					<div id="read">
-						<form action="#" method="get">
-							<!-- 작성자 -->
-							<div class="form-group">
-								<span class="form-text">작성자</span>
-								<span class="form-value">${boardVo.name}</span>
-							</div>
-							
-							<!-- 조회수 -->
-							<div class="form-group">
-								<span class="form-text">조회수</span>
-								<span class="form-value">${boardVo.hit}</span>
-							</div>
-							
-							<!-- 작성일 -->
-							<div class="form-group">
-								<span class="form-text">작성일</span>
-								<span class="form-value">${boardVo.regDate}</span>
-							</div>
-							
+					<div id="writeForm">
+						<form action="${pageContext.request.contextPath}/board/write" method="get">
 							<!-- 제목 -->
 							<div class="form-group">
-								<span class="form-text">제 목</span>
-								<span class="form-value">${boardVo.title}</span>
+								<label class="form-text" for="txt-title">제목</label>
+								<input type="text" id="txt-title" name="title" value="" placeholder="제목을 입력해 주세요">
 							</div>
 						
 							<!-- 내용 -->
-							<div id="txt-content">
-								<span class="form-value" >
-									${boardVo.content}
-								</span>
+							<div class="form-group">
+								<textarea id="txt-content" name="content"></textarea>
 							</div>
 							
-							<a id="btn_modify" href="${pageContext.request.contextPath}/board/modifyform?no=${boardVo.no}">수정</a>
-							<a id="btn_modify" href="${pageContext.request.contextPath}/board/list">목록</a>
+							<a id="btn_cancel" href="${pageContext.request.contextPath}/board/list">취소</a>
+							<button id="btn_add" type="submit" >등록</button>
 							
 						</form><!-- //form -->
-					</div><!-- //read -->
+					</div><!-- //writeForm -->
 				</div><!-- //board -->
 			</div><!-- //content  -->
 		</div><!-- //container  -->
 
 		<jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
-		
-	</div><!-- //wrap -->
+	</div>
+	<!-- //wrap -->
 
 </body>
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="guest">
+
+	<!-- 쿼리문작성 -->
+	<select id="select" resultType="guestVo">
+	<![CDATA[
+		select book_id no, name, pw, content, date
+		from guestbook
+	]]>
+	</select>
+	
+	<delete id="delete" parameterType="guestVo">
+	<![CDATA[
+		delete from guestbook
+		where book_id = #{no} and pw = #{pw}
+	]]>
+	</delete>
+	
+
+</mapper>

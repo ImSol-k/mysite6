@@ -17,6 +17,5 @@
 		from rboard where no = #{no}
 	]]>
 	</select>
-	
 
 </mapper>
