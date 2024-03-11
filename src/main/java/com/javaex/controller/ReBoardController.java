@@ -2,6 +2,7 @@ package com.javaex.controller;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.javaex.service.ReBoardService;
 import com.javaex.vo.ReBoardVo;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/rboard")
 public class ReBoardController {
@@ -19,6 +22,9 @@ public class ReBoardController {
 	@Autowired
 	ReBoardService rboardService;
 
+	/**************************************
+	 * list
+	 */
 	@RequestMapping(value="/list", method={RequestMethod.GET, RequestMethod.POST})
 	public String list(Model model) {
 		System.out.println("ReBoardController.list()");
@@ -29,6 +35,9 @@ public class ReBoardController {
 		
 		return "rboard/list";
 	}
+	/***************************************
+	 * read
+	 */
 	@RequestMapping(value="/read", method={RequestMethod.GET, RequestMethod.POST})
 	public String read(@RequestParam("no") int no, Model model) {
 		System.out.println("ReBoardController.read()");
@@ -39,12 +48,28 @@ public class ReBoardController {
 		
 		return "rboard/read";
 	}
-	
-	@RequestMapping(value="/write", method={RequestMethod.GET, RequestMethod.POST})
-	public String write() {
-		System.out.println("ReBoardController.write()");
+	/***************************************
+	 * write
+	 */
+	@RequestMapping(value="/writeform", method={RequestMethod.GET, RequestMethod.POST})
+	public String writeForm(Model model) {
+		System.out.println("ReBoardController.writeForm()");
 		
-		return "";
+		List<ReBoardVo> commentList = rboardService.exeList();
+		model.addAttribute("cList", commentList);
+		System.out.println(commentList);
+		
+		return "rboard/writeList";
+	}
+	@RequestMapping(value="/write", method= {RequestMethod.GET, RequestMethod.POST})
+	public String write(@RequestParam("title") String title,
+						@RequestParam("content") String content,
+						@RequestParam("no") int no) {
+		System.out.println("ReBoardController.write()");
+		ReBoardVo rbVo = new ReBoardVo(no, title, content);
+		rboardService.exeWrite(rbVo);
+		
+		return "redirect:/rboard/list";
 	}
 	
 }

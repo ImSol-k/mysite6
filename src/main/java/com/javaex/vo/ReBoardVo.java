@@ -15,6 +15,13 @@ public class ReBoardVo {
 	
 	public ReBoardVo() {
 	}
+	
+	public ReBoardVo(int userNo, String title, String content) {
+		this.userNo = userNo;
+		this.title = title;
+		this.content = content;
+	}
+
 	public ReBoardVo(int no, int userNo, int hit, int groupNo, int orderNo, int depth, String title, String content, String regDate) {
 		this.no = no;
 		this.userNo = userNo;

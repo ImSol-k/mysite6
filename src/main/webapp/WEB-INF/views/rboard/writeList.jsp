@@ -59,8 +59,7 @@
 								<c:forEach items="${cList }" var="rboardVo">
 									<tr>
 										<td>${rboardVo.no }</td>
-										<td class="text-left"><a
-											href="${pageContext.request.contextPath}/rboard/read?no=${rboardVo.no }">
+										<td class="text-left"><a href="${pageContext.request.contextPath}/rboard/read?no=${rboardVo.no }">
 												${rboardVo.title }[${rboardVo.depth }] </a></td>
 										<td>${rboardVo.name }</td>
 										<td>${rboardVo.hit }</td>
@@ -90,12 +89,26 @@
 								<li><a href="">▶</a></li>
 							</ul>
 
-
-							<div class="clear"></div>
 						</div>
+						
 						<c:if test="${!(empty authUser)}">
-							<a id="btn_write" href="${pageContext.request.contextPath}/board/writeform">글쓰기</a>
+							<a id="btn_write" href="${pageContext.request.contextPath}/board/writeform?">글쓰기</a>
 						</c:if>
+						<form action="${pageContext.request.contextPath}/rboard/write?no=${authUser.no}">
+							<!-- 제목 -->
+							<div class="form-group" >
+								<input type="text" id="txt-title" name="title" style="width: 500px; height: 20px;" placeholder="제목을 입력해 주세요">
+							</div>
+						
+							<!-- 내용 -->
+							<div class="form-group">
+								<textarea id="txt-content" name="content"  style="width: 500px; height: 100px;"></textarea>
+							</div>
+							<button id="btn_add" type="submit" style="width: 50px; height: 30px;">등록</button>
+							<button id="btn_add" type="submit" style="width: 50px; height: 30px;">
+								<a href="">취소</a>
+							</button>
+						</form>
 					</div>
 					<!-- //list -->
 				</div>

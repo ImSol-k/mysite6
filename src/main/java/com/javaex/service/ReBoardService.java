@@ -24,4 +24,9 @@ public class ReBoardService {
 		return rboardDao.rboardRead(no);
 	}
 	
+	public int exeWrite(ReBoardVo rbVo) {
+		System.out.println("ReBoardService.exeRead()");
+		return rboardDao.rboardInsert(rbVo);
+	}
+	
 }

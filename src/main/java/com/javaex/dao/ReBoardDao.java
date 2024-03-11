@@ -24,4 +24,9 @@ public class ReBoardDao {
 		return sqlsession.selectOne("rboard.select", no);
 	}
 	
+	public int rboardInsert(ReBoardVo rbVo) {
+		System.out.println("ReBoardDao.rboardRead()");
+		return sqlsession.insert("rboard.insert", rbVo);
+	}
+	
 }

@@ -10,6 +10,7 @@
 		from rboard r, users u where r.user_no = u.no
 	]]>
 	</select>
+	
 	<!-- read -->
 	<select id="selctOne" resultType="rboardVo" parameterType="int">
 	<![CDATA[
@@ -18,5 +19,19 @@
 	]]>
 	</select>
 	
+	
+	<select id="boardNum">
+	<![CDATA[
+	
+	]]>
+	</select>
+	
+	<!-- insert -->
+	<insert id="insert" parameterType="rboardVo">
+	<![CDATA[
+		insert into rboard
+		values (null, #{userNo}, #{title}, #{content}, 0, now(), 0, 0, 0)
+	]]>
+	</insert>
 
 </mapper>

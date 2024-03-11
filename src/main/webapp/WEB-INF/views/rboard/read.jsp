@@ -35,7 +35,8 @@
 	
 				<div id="board">
 					<div id="read">
-						<form action="${pageContext.request.contextPath}/rboard/write" method="get">
+						<form action="${pageContext.request.contextPath}/rboard/write"
+							method="get">
 							<!-- 작성자 -->
 							<div class="form-group">
 								<span class="form-text">작성자</span> <span class="form-value">${rbVo.name }</span>
@@ -62,15 +63,11 @@
 							</div>
 							<div>
 								<div>
-									<a id="btn_modify" href="${pageContext.request.contextPath}/board/modifyform?no=${rbVo.no}">수정</a>
-									<a id="btn_modify" href="${pageContext.request.contextPath}/board/list">목록</a>
+									<a id="btn_modify"
+										href="${pageContext.request.contextPath}/board/modifyform?no=${rbVo.no}">수정</a>
+									<a id="btn_modify"
+										href="${pageContext.request.contextPath}/board/list">목록</a>
 								</div>
-								<div class="form-group" style="width: 590px;">
-									<!-- <label class="form-text" for="txt-title">댓글달기</label> -->
-									<input type="text" style="width: 500px; height: 50px; vertical-align: top;" name="comment" value="" placeholder="댓글달기">
-									<a id="btn_modify" href="${pageContext.request.contextPath}/board/write">등록</a>
-								</div>
-
 							</div>
 
 						</form>
