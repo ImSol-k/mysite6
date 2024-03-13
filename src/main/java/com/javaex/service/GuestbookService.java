@@ -10,17 +10,27 @@ import com.javaex.vo.GuestbookVo;
 
 @Service
 public class GuestbookService {
-	
+
 	@Autowired
 	GuestbookDao guestbookDao;
-	
-	public List<GuestbookVo> exeList(){
-		System.out.println("GuestbookService.exeList()");
-		return guestbookDao.gbList();
+
+	// list
+	public List<GuestbookVo> exeList() {
+
+		return guestbookDao.guestList();
 	}
-	public int exedelete(GuestbookVo guestVo) {
-		System.out.println("GuestbookService.exedelete()");
-		return guestbookDao.gbDelete(guestVo);
+
+	// 등록
+	public void exeInsert(GuestbookVo guestbookVo) {
+		System.out.println("GuestbookService.exeInsert()");
+
+		guestbookDao.guestbookInsert(guestbookVo);
 	}
-	
+
+	// 삭제
+	public void exeDelete(GuestbookVo guestbookVo) {
+		System.out.println("GuestbookService.exeDelete()");
+
+		guestbookDao.guestbookDelete(guestbookVo);
+	}
 }

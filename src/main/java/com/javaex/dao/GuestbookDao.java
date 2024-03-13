@@ -10,19 +10,32 @@ import com.javaex.vo.GuestbookVo;
 
 @Repository
 public class GuestbookDao {
-	
+
 	@Autowired
 	SqlSession sqlSession;
-	
-	public List<GuestbookVo> gbList() {
-		System.out.println("GuestbookDao.guestbookList()");
-		
-		return sqlSession.selectList("guest.select");
+
+	// List
+	public List<GuestbookVo> guestList() {
+
+		List<GuestbookVo> guestbookList = sqlSession.selectList("guestbook.select");
+		return guestbookList;
 	}
-	
-	public int gbDelete(GuestbookVo guestVo) {
-		System.out.println("GuestbookDao.gbDelete()");
-		return sqlSession.delete("guest.delete", guestVo);
+
+	// 등록
+	public int guestbookInsert(GuestbookVo guestbookVo) {
+		System.out.println("GusetbookDao.guestbookInsert()");
+
+		int count = sqlSession.insert("guestbook.insert", guestbookVo);
+
+		return count;
 	}
-	
+
+	// 삭제
+	public int guestbookDelete(GuestbookVo guestbookVo) {
+		System.out.println("GuestbookDao.guestbookDelete()");
+
+		int count = sqlSession.delete("guestbook.delete", guestbookVo);
+		return count;
+	}
+
 }

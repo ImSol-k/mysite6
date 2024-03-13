@@ -18,32 +18,62 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 @RequestMapping("guest")
 public class GuestbookController {
-	
+
 	@Autowired
 	GuestbookService guestbookService;
-	
-	@RequestMapping(value="/list", method={RequestMethod.GET, RequestMethod.POST})
-	public String list(Model model) {
-		System.out.println("GuestbookController.list()");
-		
-		List<GuestbookVo> guestList = guestbookService.exeList();
-		model.addAttribute("gList", guestList);
-		
-		return "guestbook/addList";
+
+	/**************************************************************
+	 * Guestbook Controller
+	 *  -일반 방명록
+	 **************************************************************/
+	//list
+	@RequestMapping(value = "/addlist", method = { RequestMethod.GET, RequestMethod.POST })
+	public String addList(Model model) {
+		System.out.println("GuestbookController.addList()");
+
+		List<GuestbookVo> guestbookList = guestbookService.exeList();
+		model.addAttribute("gList", guestbookList);
+
+		return "/guestbook/addList";
 	}
-	
-	//삭제
-	@RequestMapping(value="/deleteform", method={RequestMethod.GET, RequestMethod.POST})
-	public String deleteForm() {
+
+	//insert
+	@RequestMapping(value = "/insert", method = { RequestMethod.GET, RequestMethod.POST })
+	public String guestInsert(@ModelAttribute GuestbookVo guestbookVo) {
+		System.out.println("GuestbookController.GuestInsert()");
+
+		guestbookService.exeInsert(guestbookVo);
+
+		return "redirect:/guest/addlist";
+	}
+
+	//deleteform
+	@RequestMapping(value = "/deleteform", method = { RequestMethod.GET, RequestMethod.POST })
+	public String guestDeleteForm() {
 		System.out.println("GuestbookController.deleteForm()");
-		return "guestbook/deleteForm";
+
+		return "/guestbook/deleteForm";
 	}
-	@RequestMapping(value="/delete", method={RequestMethod.GET, RequestMethod.POST})
-	public String delete(@ModelAttribute GuestbookVo guestVo) {
-		System.out.println("GuestbookController.delete()");
-		
-		System.out.println(guestVo);
-		guestbookService.exedelete(guestVo);
-		return "redirect:/guest/list";
+
+	//delete
+	@RequestMapping(value = "/delete", method = { RequestMethod.GET, RequestMethod.POST })
+	public String guestDelete(@ModelAttribute GuestbookVo guestbookVo) {
+		System.out.println("GuestbookController.deleteForm()");
+
+		guestbookService.exeDelete(guestbookVo);
+		return "redirect:/guest/addlist";
 	}
+	
+	/*********************************************************************
+	 * ajax방명록
+	 *  -api 사용
+	 *********************************************************************/
+	@RequestMapping(value = "/ajaxindex", method = { RequestMethod.GET, RequestMethod.POST })
+	public String ajaxIndex() {
+		System.out.println("GuestbookController.ajaxIndex()");
+		return "/guestbook/ajaxIndex";
+	}
+	
+	
+	
 }
