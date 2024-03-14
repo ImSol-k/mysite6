@@ -26,7 +26,6 @@ public class GuestbookDao {
 		System.out.println("GusetbookDao.guestbookInsert()");
 
 		int count = sqlSession.insert("guestbook.insert", guestbookVo);
-
 		return count;
 	}
 
@@ -36,6 +35,31 @@ public class GuestbookDao {
 
 		int count = sqlSession.delete("guestbook.delete", guestbookVo);
 		return count;
+	}
+
+	/*********************************
+	 * ajax
+	 */
+	// ajax등록
+	public int insertSelectkey(GuestbookVo guestbookVo) {
+		System.out.println("GuestbookDao.insertSelectkey()");
+		
+		sqlSession.insert("guestbook.insertSelectKey", guestbookVo);
+		return guestbookVo.getNo();
+	}
+
+	public GuestbookVo guestbookSelectOne(int no) {
+		System.out.println("GuestbookDao.guestbookSelectOne()");
+		
+		// 불러온 마지막번호로 select
+		GuestbookVo gbVo = sqlSession.selectOne("guestbook.selectOne", no);
+		return gbVo;
+	}
+	
+	public int geustbookDeleteA(GuestbookVo guestbookVo) {
+		sqlSession.delete("guestbook.delete");
+		System.out.println("ajax"+guestbookVo);
+		return 0;
 	}
 
 }

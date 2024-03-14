@@ -5,34 +5,56 @@
 	<!-- 전체 리스트 -->
 	<select id="select" resultType="guestVo">
 		<![CDATA[
-			select book_id no
-				  ,name
-				  ,pw
-				  ,content
-				  ,date
+			select book_id no ,name ,pw ,content ,date
 			from guestbook
 		]]>
 	</select>
-
-	<!-- 등록 -->
-	<update id="insert" parameterType="guestVo">
+	
+	<!-- 데이터1개 가져오기 -->
+   <select id="selectOne" parameterType="int" resultType="com.javaex.vo.GuestbookVo">
+      <![CDATA[
+         select  book_id no, name, pw, content, date
+         from guestbook
+         where book_id = #{no}
+      ]]>
+   </select>
+	
+	<!-- 키값 얻어오기? -->
+	<insert id="insertSelectKey" parameterType="guestVo">
+		<!-- 추가후 -->
 		<![CDATA[
 			insert into guestbook
-			values(null,
-				   #{name},
-				   #{pw},
-				   #{content},
-				   now())
+			values(null, #{name}, #{pw}, #{content}, now())
 		]]>
-	</update>
+		<!-- 마지막번호(방금 추가한 데이터번호) 얻어오기 -->
+		<selectKey keyProperty="no" resultType="int" order="AFTER">
+		<![CDATA[
+			select last_insert_id();
+		]]>
+		</selectKey>
+	</insert>
+	
+	
+
+	<!-- 등록 -->
+	<insert id="insert" parameterType="guestVo">
+		<![CDATA[
+			insert into guestbook
+			values(null, #{name}, #{pw}, #{content}, now())
+		]]>
+	</insert>
 
 	<!-- 삭제 -->
 	<delete id="delete" parameterType="guestVo">
 		<![CDATA[
 			delete from guestbook
 			where book_id = ${no}
-			and password = ${pw}
+			and pw = ${pw}
 		]]>
 	</delete>
+	
+	
+	
+	
 
 </mapper>

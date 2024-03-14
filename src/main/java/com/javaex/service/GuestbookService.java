@@ -33,4 +33,22 @@ public class GuestbookService {
 
 		guestbookDao.guestbookDelete(guestbookVo);
 	}
+	
+	/***********************************
+	 * ajax
+	 * */
+	//ajax 저장
+	public GuestbookVo exeAddandGuest(GuestbookVo guestbookVo) {
+		System.out.println("GuestbookService.exeAddandGuest()");
+		//저장
+		guestbookDao.insertSelectkey(guestbookVo);
+		//데이터 가져오기
+		GuestbookVo gbVo = guestbookDao.guestbookSelectOne(guestbookVo.getNo());
+		return gbVo;
+	}
+	
+	public int exeDeleteGuest(GuestbookVo guestbookVo) {
+		guestbookDao.guestbookDelete(guestbookVo);
+		return 0;
+	}
 }
