@@ -227,14 +227,7 @@
 	    		}
 	    		
 	    		//화면에서 삭제
-	    	 	let tableTag = document.querySelectorAll(".guestRead tr:first-child>td:first-child");
-	    	 	for(let i = 0; i< tableTag.length; i++){
-	    	 			if(tableTag[i].textContent == no){
-	    	 				console.log("t:",tableTag[i].parentElement.parentElement.parentElement);
-	    	 				tableTag[i].parentElement.parentElement.parentElement.remove();
-	    	 			}
-	    	 		
-	    	 	}
+	    	 	tableRemove(no);
 	    	 	
 	    	  	console.log(guestbookVo);
 	    		axios({
@@ -246,7 +239,7 @@
 	    			responseType: 'json' 	//수신타입
 	    		}).then(function (response) {
 	    			//console.log("=========================");
-	    			//console.log(response); 	
+	    			console.log(response.data); 	
 	    			
 	    		}).catch(function (error) {
 	    			console.log(error);
@@ -320,6 +313,16 @@
 			
 	}//render()
 	
+	function tableRemove(no){
+		let tableTag = document.querySelectorAll(".guestRead tr:first-child>td:first-child");
+	 	for(let i = 0; i< tableTag.length; i++){
+	 			if(tableTag[i].textContent == no){
+	 				//console.log("t:",tableTag[i].parentElement.parentElement.parentElement);
+	 				tableTag[i].parentElement.parentElement.parentElement.remove();
+	 			}
+	 		
+	 	}
+	}
 	
 	
 </script>
