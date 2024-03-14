@@ -225,6 +225,17 @@
 	    				pw : password,
 	    				no : no
 	    		}
+	    		
+	    		//화면에서 삭제
+	    	 	let tableTag = document.querySelectorAll(".guestRead tr:first-child>td:first-child");
+	    	 	for(let i = 0; i< tableTag.length; i++){
+	    	 			if(tableTag[i].textContent == no){
+	    	 				console.log("t:",tableTag[i].parentElement.parentElement.parentElement);
+	    	 				tableTag[i].parentElement.parentElement.parentElement.remove();
+	    	 			}
+	    	 		
+	    	 	}
+	    	 	
 	    	  	console.log(guestbookVo);
 	    		axios({
 	    			method: 'post', //method type : put, post, delete
@@ -234,15 +245,8 @@
 	    			//data: guestbookVo, 		//put, post, delete 방식 자동으로 JSON으로 변환 전달
 	    			responseType: 'json' 	//수신타입
 	    		}).then(function (response) {
-	    			console.log("=========================");
-	    			console.log(response); 	
-	    			//console.log(response.data);
-	    			
-	    			//respon.data의 길이만큼 render호출
-	    			for(let i = 0; i < response.data.length; i++){
-	    				let guestVo = response.data[i];
-	    				render(guestVo, "down");
-	    			}
+	    			//console.log("=========================");
+	    			//console.log(response); 	
 	    			
 	    		}).catch(function (error) {
 	    			console.log(error);
@@ -250,6 +254,7 @@
 	    	 	//삭제후 모달창 닫기
 	    		mClose();
 	    		
+	    	 	
 	       });
 	      
 	      //모달창 닫기

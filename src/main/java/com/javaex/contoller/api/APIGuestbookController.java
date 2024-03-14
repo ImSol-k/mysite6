@@ -50,11 +50,9 @@ public class APIGuestbookController {
 	//삭제
 	@ResponseBody
 	@RequestMapping(value="/guestbooks/delete", method = RequestMethod.POST)
-	public String delete(@ModelAttribute GuestbookVo guestbookVo) {
+	public void delete(@ModelAttribute GuestbookVo guestbookVo) {
 		System.out.println("APIGuestbookController.delete()");
 		guestbookService.exeDeleteGuest(guestbookVo);
-		
-		return "";
 	}
 	
 }
