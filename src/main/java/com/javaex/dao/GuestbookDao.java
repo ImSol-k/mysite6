@@ -56,10 +56,10 @@ public class GuestbookDao {
 		return gbVo;
 	}
 	
-	public int geustbookDeleteA(GuestbookVo guestbookVo) {
-		sqlSession.delete("guestbook.delete");
-		System.out.println("ajax"+guestbookVo);
-		return 0;
-	}
+//	public int geustbookRemove(GuestbookVo guestbookVo) {
+//		int count = sqlSession.delete("guestbook.delete");
+//		System.out.println("ajax"+guestbookVo);
+//		return count;
+//	}
 
 }

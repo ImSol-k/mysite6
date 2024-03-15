@@ -48,7 +48,8 @@ public class GuestbookService {
 	}
 	
 	public int exeDeleteGuest(GuestbookVo guestbookVo) {
-		guestbookDao.guestbookDelete(guestbookVo);
-		return 0;
+		int count = guestbookDao.guestbookDelete(guestbookVo);
+		System.out.println("Service"+count);
+		return count;
 	}
 }
