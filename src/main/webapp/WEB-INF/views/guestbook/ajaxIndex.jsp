@@ -187,8 +187,6 @@
 			//data: guestbookVo, 		//put, post, delete 방식 자동으로 JSON으로 변환 전달
 			responseType: 'json' 	//수신타입
 		}).then(function (response) {
-			//console.log(response); 	//수신데이터
-			//console.log(response.data); 	//수신데이터
 			
 			//respon.data의 길이만큼 render호출
 			for(let i = 0; i < response.data.length; i++){
@@ -224,7 +222,7 @@
     	//새로 추가된 방명록
         axios({
 			method: 'post', // put, post, delete
-        	url: '/mysite6/api/guestbooks',
+        	url: "${pageContext.request.contextPath}/api/guestbooks",
         	headers: {"Content-Type" : "application/json; charset=utf-8"}, //전송타입
         	params: guestbookVo, //파라미터로 값이 전달
         	//data: guestbookVo, //JSON으로 변환 전달

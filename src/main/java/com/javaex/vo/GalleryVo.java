@@ -1,13 +1,16 @@
 package com.javaex.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class GalleryVo {
 
 		private int no;
+		private int userNo;
+		private MultipartFile file;
 		private String orgName;
 		private String saveName;
 		private String filePath;
 		private String content;
-		private String userNo;
 		private String name;
 		private long fileSize;
 		
@@ -15,7 +18,18 @@ public class GalleryVo {
 		public GalleryVo() {
 			super();
 		}
-		public GalleryVo(int no, String orgName, String saveName, String filePath, String content, String userNo,
+		
+		public GalleryVo(String orgName, String saveName, String filePath, String content, long fileSize, int userNo) {
+			super();
+			this.orgName = orgName;
+			this.saveName = saveName;
+			this.filePath = filePath;
+			this.content = content;
+			this.fileSize = fileSize;
+			this.userNo = userNo;
+		}
+
+		public GalleryVo(int no, String orgName, String saveName, String filePath, String content, int userNo,
 				String name, long fileSize) {
 			super();
 			this.no = no;
@@ -59,10 +73,10 @@ public class GalleryVo {
 		public void setContent(String content) {
 			this.content = content;
 		}
-		public String getUserNo() {
+		public int getUserNo() {
 			return userNo;
 		}
-		public void setUserNo(String userNo) {
+		public void setUserNo(int userNo) {
 			this.userNo = userNo;
 		}
 		public String getName() {
@@ -77,9 +91,12 @@ public class GalleryVo {
 		public void setFileSize(long fileSize) {
 			this.fileSize = fileSize;
 		}
-		
-		
-		
+		public MultipartFile getFile() {
+			return file;
+		}
+		public void setFile(MultipartFile file) {
+			this.file = file;
+		}
 		
 		@Override
 		public String toString() {

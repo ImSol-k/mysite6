@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: mysite6
+Bundle-SymbolicName: mysite6
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Automatic-Module-Name: mysite6
+Export-Package: com.javaex,
+ com.javaex.config,
+ com.javaex.contoller.api,
+ com.javaex.controller,
+ com.javaex.dao,
+ com.javaex.service,
+ com.javaex.vo

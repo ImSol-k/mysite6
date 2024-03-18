@@ -8,6 +8,7 @@
 		<typeAlias alias="guestVo" type="com.javaex.vo.GuestbookVo" />
 		<typeAlias alias="rboardVo" type="com.javaex.vo.ReBoardVo" />
 		<typeAlias alias="attachVo" type="com.javaex.vo.AttachVo" />
+		<typeAlias alias="galleryVo" type="com.javaex.vo.GalleryVo" />
 		
 	</typeAliases>
 
