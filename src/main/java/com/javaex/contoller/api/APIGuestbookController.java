@@ -25,7 +25,7 @@ import jakarta.websocket.server.PathParam;
 public class APIGuestbookController {
 
 	@Autowired
-	GuestbookService guestbookService;
+	private GuestbookService guestbookService;
 
 	
 	/********************************

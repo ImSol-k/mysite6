@@ -19,6 +19,11 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	/*************************************
+	 * Login
+	 *  -loginForm()
+	 *  -login()
+	 */
 	@RequestMapping(value="/loginform", method = {RequestMethod.GET, RequestMethod.POST})
 	public String loginForm() {
 		System.out.println("UserController.loginform()");
@@ -42,8 +47,12 @@ public class UserController {
 		}
 
 	}
-	/**********
-	 * logout */
+
+
+	/*************************************
+	 * Logout
+	 * -logout()
+	 */
 	@RequestMapping(value="/logout", method = {RequestMethod.GET, RequestMethod.POST})
 	public String logout(HttpSession session){
 		System.out.println("UserController.logout()");
@@ -52,15 +61,18 @@ public class UserController {
 		
 		return "redirect:/main";
 	}
-	/*********
-	 * join	 */
+	
+	/*************************************
+	 * Join
+	 *  -joinForm()
+	 *  -join
+	 */
 	@RequestMapping(value="/joinform", method = {RequestMethod.GET, RequestMethod.POST})
 	public String joinForm() {
 		System.out.println("UserController.joinform()");
 		
 		return "user/joinForm";
 	}
-
 	@RequestMapping(value = "/join", method = { RequestMethod.GET, RequestMethod.POST })
 	public String join(@ModelAttribute UserVo userVo) {
 		System.out.println("UserController.join()");
@@ -75,8 +87,12 @@ public class UserController {
 			return "redirect:/user/joinform";
 		}
 	}
-	/**********
-	 * modify */
+	
+	/*************************************
+	 * Modify
+	 *  -modifyForm()
+	 *  -modify()
+	 */
 	@RequestMapping(value="/modifyform", method= {RequestMethod.GET, RequestMethod.POST})
 	public String modifyForm(HttpSession session, Model model) {
 		System.out.println("UserController.mform()");
@@ -93,7 +109,6 @@ public class UserController {
 		System.out.println("Form: "+ userVo);
 		return "user/modifyForm";
 	}
-	
 	@RequestMapping(value="/modify", method= {RequestMethod.GET, RequestMethod.POST})
 	public String modify(@ModelAttribute UserVo userVo, HttpSession session) {
 		System.out.println("UserController.modify()");

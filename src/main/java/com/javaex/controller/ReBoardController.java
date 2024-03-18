@@ -16,16 +16,16 @@ import com.javaex.vo.ReBoardVo;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/rboard")
+@RequestMapping("rboard")
 public class ReBoardController {
 	
 	@Autowired
-	ReBoardService rboardService;
+	private ReBoardService rboardService;
 
 	/**************************************
 	 * list
 	 */
-	@RequestMapping(value="/list", method={RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="list", method={RequestMethod.GET, RequestMethod.POST})
 	public String list(Model model) {
 		System.out.println("ReBoardController.list()");
 		
@@ -38,7 +38,7 @@ public class ReBoardController {
 	/***************************************
 	 * read
 	 */
-	@RequestMapping(value="/read", method={RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="read", method={RequestMethod.GET, RequestMethod.POST})
 	public String read(@RequestParam("no") int no, Model model) {
 		System.out.println("ReBoardController.read()");
 		
@@ -50,8 +50,10 @@ public class ReBoardController {
 	}
 	/***************************************
 	 * write
+	 *  -writeForm()
+	 *  -write()
 	 */
-	@RequestMapping(value="/writeform", method={RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="writeform", method={RequestMethod.GET, RequestMethod.POST})
 	public String writeForm(Model model) {
 		System.out.println("ReBoardController.writeForm()");
 		
@@ -61,7 +63,7 @@ public class ReBoardController {
 		
 		return "rboard/writeList";
 	}
-	@RequestMapping(value="/write", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="write", method= {RequestMethod.GET, RequestMethod.POST})
 	public String write(@RequestParam("title") String title,
 						@RequestParam("content") String content,
 						@RequestParam("no") int no) {

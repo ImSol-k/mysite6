@@ -12,7 +12,7 @@ import com.javaex.vo.GuestbookVo;
 public class GuestbookService {
 
 	@Autowired
-	GuestbookDao guestbookDao;
+	private GuestbookDao guestbookDao;
 
 	// list
 	public List<GuestbookVo> exeList() {

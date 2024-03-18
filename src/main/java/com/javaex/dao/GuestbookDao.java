@@ -12,7 +12,7 @@ import com.javaex.vo.GuestbookVo;
 public class GuestbookDao {
 
 	@Autowired
-	SqlSession sqlSession;
+	private SqlSession sqlSession;
 
 	// List
 	public List<GuestbookVo> guestList() {

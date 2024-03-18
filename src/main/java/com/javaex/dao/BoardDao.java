@@ -12,7 +12,7 @@ import com.javaex.vo.BoardVo;
 public class BoardDao {
 
 	@Autowired
-	SqlSession sqlSession;
+	private SqlSession sqlSession;
 
 	//리스트
 	public List<BoardVo> boardSelect() {

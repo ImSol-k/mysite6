@@ -11,7 +11,7 @@
 	</select>
 	
 	<!-- 데이터1개 가져오기 -->
-   <select id="selectOne" parameterType="int" resultType="com.javaex.vo.GuestbookVo">
+   <select id="selectOne" parameterType="int" resultType="guestVo">
       <![CDATA[
          select  book_id no, name, pw, content, date
          from guestbook

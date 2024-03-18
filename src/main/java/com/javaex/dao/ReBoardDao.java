@@ -12,7 +12,7 @@ import com.javaex.vo.ReBoardVo;
 public class ReBoardDao {
 	
 	@Autowired
-	SqlSession sqlsession;
+	private SqlSession sqlsession;
 
 	public List<ReBoardVo> rboardList() {
 		System.out.println("ReBoardDao.rboardList()");

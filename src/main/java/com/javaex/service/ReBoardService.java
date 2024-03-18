@@ -12,7 +12,7 @@ import com.javaex.vo.ReBoardVo;
 public class ReBoardService {
 
 	@Autowired
-	ReBoardDao rboardDao;
+	private ReBoardDao rboardDao;
 	
 	public List<ReBoardVo> exeList() {
 		System.out.println("ReBoardService.exeList()");

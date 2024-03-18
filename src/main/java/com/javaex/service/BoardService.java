@@ -12,7 +12,7 @@ import com.javaex.vo.BoardVo;
 public class BoardService {
 
 	@Autowired
-	BoardDao boardDao;
+	private BoardDao boardDao;
 
 	public List<BoardVo> exeList() {
 		System.out.println("BoardService.exeList()");
