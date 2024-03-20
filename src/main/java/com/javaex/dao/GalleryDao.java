@@ -25,6 +25,7 @@ public class GalleryDao {
 		List<GalleryVo> galleryList = sqlSession.selectList("gallery.select");
 		return galleryList;
 	}
+	
 	/*****************************
 	 * 업로드
 	 */

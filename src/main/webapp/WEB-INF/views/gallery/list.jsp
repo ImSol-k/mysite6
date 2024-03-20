@@ -83,8 +83,13 @@
 							<button id="btnImgUpload">이미지올리기</button>
 						</c:if>
 						<div class="clear"></div>
+						
 						<ul id="viewArea">
+						
+						<!-- ### 이미지리스트 ### -->
+						
 						</ul>
+						
 					</div>
 					<!-- //list -->
             </div>
@@ -155,7 +160,7 @@
 	   
 	   //이미지 업로드 팝업열기
 	   let btnImgUpload = document.querySelector("#btnImgUpload");
-	   console.log(btnImgUpload);
+	   //console.log(btnImgUpload);
 	   btnImgUpload.addEventListener("click", modalOpen);
 	   
 	   //파일선택
@@ -165,6 +170,12 @@
 	   //이미지 업로드
 	   let saveBtn = document.querySelector("#saveBtn");
 	   saveBtn.addEventListener("click", imgUpload);
+	   
+	   //이미지 클릭
+	   let clickImg = document.querySelectorAll("#viewArea");
+	   for(let i = 0; i < clickImg.length; i++){
+	   		console.log("clickImg :",clickImg[i]);
+	   }
 	   
 	   //팝업닫기
 	   let closeBtn = document.querySelectorAll(".closeBtn");
@@ -200,7 +211,7 @@
 	function galleryList(galleryVo){
 	   console.log("리스트그리기");
 	   let str = "";
-	   str += ' <li>';
+	   str += ' <li id="i-'+galleryVo.no+'">';
 	   str += '  <div class="view">';
 	   str += '   <img class="imgItem" src="${pageContext.request.contextPath }/assets/galleryImg/'+galleryVo.saveName+'">';
 	   str += '   <div class="imgWriter"> 작성자: <strong>'+galleryVo.name+'</strong></div>';
@@ -224,6 +235,13 @@
   			modal.style.display = "block";
   		} 
 	}//modalOpen()
+	
+	/***************************
+	 * 이미지 클릭
+	 */
+	function showImg(){
+		
+	}//showImg()
 	
 	/***************************
 	 * 이미지 업로드
